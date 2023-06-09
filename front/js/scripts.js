@@ -1,5 +1,8 @@
-function addEmployee(event) {
-  event.preventDefault();
+const btn = document.querySelector("#enviar")
+
+btn.addEventListener("click", async (e) => {
+
+  e.preventDefault();
 
   // Obter os valores dos campos do formulário
   const name = document.getElementById("name").value;
@@ -9,12 +12,12 @@ function addEmployee(event) {
 
   // Criar um objeto de funcionário com os valores
   const newEmployee = {
-    name: name,
+    nome: name,
     email: email,
     cpf: cpf,
-    image: image,
+    imagem: "imagem"
   };
-
+  console.log(newEmployee)
   // Enviar os dados do funcionário para a API
   fetch("http://127.0.0.1:8080/funcionario", {
     method: "POST",
@@ -24,19 +27,29 @@ function addEmployee(event) {
     body: JSON.stringify(newEmployee),
   })
     .then(response => response.json())
-    .then(data => {
-      // Verificar a resposta da API e fazer as ações necessárias
-      if (data.success) {
-        // Funcionário adicionado com sucesso
-        employees.push(newEmployee);
-        updateEmployeeList();
-        addEmployeeForm.reset();
-      } else {
-        // Ocorreu um erro ao adicionar o funcionário
-        console.error(data.message);
-      }
-    })
+    .then(json => console.log(json))
     .catch(error => {
-      console.error("Ocorreu um erro ao conectar à API:", error);
+
     });
-}
+
+
+})
+
+const btndeletar = document.querySelector("#deletar")
+btndeletar.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const id = document.querySelector("#delete-id").value
+  fetch("http://127.0.0.1:8080/funcionario/" + id, {
+    method: "DELETE"
+  })
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(error => {
+
+    });
+
+
+})
+
+
+
