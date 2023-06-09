@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funcionários</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/scripts.js" defer></script>
+  </head>
+  <body>
+    <div id="employee-container">
+      <h2>Funcionários:</h2>
+      <ul id="employee-list"></ul>
+    </div>
+
+    <div id="add-employee-container">
+      <h2>Cadastrar Funcionário:</h2>
+      <form id="add-employee-form">
+        <div>
+          <label for="name">Nome:</label>
+          <input type="text" name="name" id="name" required />
+        </div>
+        <div>
+          <label for="email">E-mail:</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div>
+          <label for="cpf">CPF:</label>
+          <input type="text" name="cpf" id="cpf" required />
+        </div>
+        <div>
+          <label for="image">Imagem:</label>
+          <input type="file" name="image" id="image" accept="image/*" required />
+        </div>
+        <input type="submit" value="Cadastrar" />
+      </form>
+    </div>
+
+    <div id="delete-employee-container">
+      <h2>Excluir Funcionário:</h2>
+      <form id="delete-employee-form">
+        <div>
+          <label for="delete-id">ID do Funcionário:</label>
+          <input type="text" name="delete-id" id="delete-id" required />
+        </div>
+        <input type="submit" value="Excluir" />
+      </form>
+    </div>
+<!-- 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Obter referências aos elementos relevantes
+        const addEmployeeForm = document.getElementById("add-employee-form");
+        const deleteEmployeeForm = document.getElementById(
+          "delete-employee-form"
+        );
+        const employeeList = document.getElementById("employee-list");
+
+        // Array para armazenar os funcionários
+        let employees = [];
+
+        // Função para atualizar a lista de funcionários
+        function updateEmployeeList() {
+          // Limpar a lista atual
+          employeeList.innerHTML = "";
+
+          // Adicionar cada funcionário como um item de lista
+          employees.forEach(function (employee) {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${employee.name} - ${employee.email} - ${employee.cpf} - ${employee.image}`;
+            employeeList.appendChild(listItem);
+          });
+        }
+
+        // Função para cadastrar um novo funcionário
+        function addEmployee(event) {
+          event.preventDefault();
+
+          // Obter os valores dos campos do formulário
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const cpf = document.getElementById("cpf").value;
+          const image = document.getElementById("image").value;
+
+          // Criar um objeto de funcionário com os valores
+          const newEmployee = {
+            name: name,
+            email: email,
+            cpf: cpf,
+            image: image,
+          };
+
+          // Adicionar o novo funcionário ao array
+          employees.push(newEmployee);
+
+          // Atualizar a lista de funcionários
+          updateEmployeeList();
+
+          // Limpar o formulário
+          addEmployeeForm.reset();
+        }
+
+        // Função para excluir um funcionário
+        function deleteEmployee(event) {
+          event.preventDefault();
+
+          // Obter o ID do funcionário a ser excluído
+          const deleteId = document.getElementById("delete-id").value;
+
+          // Filtrar o array de funcionários para remover o funcionário correspondente ao ID
+          employees = employees.filter(function (employee) {
+            return employee.id !== deleteId;
+          });
+
+          // Atualizar a lista de funcionários
+          updateEmployeeList();
+
+          // Limpar o formulário
+          deleteEmployeeForm.reset();
+        }
+
+        // Adicionar um ouvinte de evento para o evento de envio do formulário de cadastro
+        addEmployeeForm.addEventListener("submit", addEmployee);
+
+        // Adicionar um ouvinte de evento para o evento de envio do formulário de exclusão
+        deleteEmployeeForm.addEventListener("submit", deleteEmployee);
+      });
+    </script> -->
+  </body>
+</html>
